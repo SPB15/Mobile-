@@ -6,8 +6,51 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 <link href="css/style.css"rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Kg4vQlwu6tUnKqopHzxih5T76Synjck&libraries=places"></script>
 <script src="slider.js"></script>
+<style>
+
+#map {
+
+height:100%;
+}
+
+
+
+</style>
+<script>
+
+function initMap(){
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat:52.193636, lng:-2.221575},
+		zoom:15
+	
+});
+
+var infowindow = new google.maps.InfoWindow();
+var service = new google.maps.places.PlacesService(map);
+
+service.getDetails({
+
+placeId: 'ChIJvbd5Co7wcEgRuGGv7KRPK4o'
+}, function (place, status){
+	if (status === google.maps.places.PlacesServiceStatus.OK){
+	var marker = new google.maps.Marker({
+	map:map,
+	position: place.geometry.location
+	});
+	google.maps.event.addListener(marker, 'click', function(){
+	infowindow.setContent('<div><strong>' + place.name + '</strong> <<br>' +
+	'Place ID: ' + place.place_id + '<br>' +
+	place.formatted_address + '</div>');
+	infowindow.open(map, this);
+	});
+	}
+});
+}
+
+
+</script>
 </head>
 
 <body>
@@ -15,20 +58,31 @@
 <h2 class="head">Resteraunts</h2>
 
 <div class="content">
-<p><h2>A variety of Resteraunts exist within the world, only the finest are offered here in Worcester. </h2></p>
+<p><h1>A variety of Resteraunts exist within the world, only the finest are offered here in Worcester. </h1></p>
+<p><h2> Below shows multiple bar options in worcester. <h2></p>
 <div class="slider">
 	<ul>
 		<li> 
-		<img src="images/bar.jpg" />
+		<h3>Digles</h3>
+		<p><a href ="http://www.diglishousehotel.co.uk/wp-content/uploads/2016/07/Diglis-House-March-Al-Carte-17.pdf">Visit Website</a></p>
+
+		<img src="images/rest.png" />
+		
 		</li>
-		<li>
-		<img src="images/bar1.jpg" />
+		<li><h3>The Quay</h3>
+		<p><a href="http://brownsworcester.co.uk/">Visit Website</a></p>
+		<img src="images/rest1.jpg" />
+		
 		</li>
-		<li>
-		<img src="images/bar 2.jpg"/>
+		<li><h3>Bolero</h3>
+		<p><a href="http://caffebolero.co.uk/">Visit Website</a></p>
+		<img src="images/rest2.jpg"/>
+		
 		</li>
-		<li>
-		<img src="images/bar3.jpg"/>
+		<li><h3>The Old Rectifying House</h3>
+		<p><a href="http://theoldrec.co.uk/">Visit Website</a></p>
+		<img src="images/rest3.jpg"/>
+		
 		</li>
 	</ul>
 	
@@ -38,6 +92,15 @@
 </div>
 </div>
 
+
+
+<p></p>
+
+</div>
+<div id="map"></div>
+<script async defer 
+src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Kg4vQlwu6tUnKqopHzxih5T76Synjck&libraries=places&callback=initMap">
+</script>
 <p class="code"> 
 <code>
 <span>&nbsp;&nbsp;</span>

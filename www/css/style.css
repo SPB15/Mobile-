@@ -139,7 +139,7 @@ width: 300px;
 overflow: hidden;
 height: 300px;
 position: relative;
-
+left:100px;
 }
 
 .slider ul {
@@ -175,9 +175,9 @@ display: block;
 box-sizing: border-box;
 border: none;
 outline: none;
-top: 0;
+top: 70px;
 bottom: 0;
-width: 20%;
+width: 10%;
 background-color: rgba(0, 0, 0, 0.3);
 color: #fff;
 margin: 0;
