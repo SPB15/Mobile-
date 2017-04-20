@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place searches</title>
+	
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<link href="css/style.css"rel="stylesheet" type="text/css" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Kg4vQlwu6tUnKqopHzxih5T76Synjck&libraries=places">
+
+      var map;
+      var infowindow;
+
+      function initMap() {
+        var worcester = {lat:52.193636 , lng: -2.221575 };
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: worcester,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: worcester,
+          radius: 500,
+          type: ['store']
+        }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Kg4vQlwu6tUnKqopHzxih5T76Synjck&libraries=places&callback=initMap" async defer></script>
+	
+	<div class="footer">
+<div class="menu">
+	<a href="resteraunt.html">Resteraunts</a>
+    <a href="bars.html">Bars</a>
+    <a href="entertainment.html">Entertainment</a>
+    <a href="location.html">Where are You?</a>
+</div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>
+  </body>
+</html>
