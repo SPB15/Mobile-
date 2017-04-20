@@ -19,4 +19,5 @@
 	<icon src="images/logos.png" platform="ios" width="57" height="57" destiny="mdpi"/>
 
 	<plugin name="cordova-plugin-device-motion"  />
+		<gap:plugin name="cordova-plugin-geolocation" spec="" />
 </widget>
