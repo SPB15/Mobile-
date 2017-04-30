@@ -7,7 +7,8 @@
 In your browser, open the file:
 
     /www/index.html
-
+### Platform:
+MOBILE APPLICATION TO BE RUN IN IOS.
 
 ### PhoneGap Build
 TO BUILD THE APPLICATION, FORK THE CODE FROM https://github.com/SPB15/Mobile-.git
